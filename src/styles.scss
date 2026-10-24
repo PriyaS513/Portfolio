@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-color: #0f172a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #4facfe;
+  --primary-glow: rgba(79, 172, 254, 0.3);
+  --secondary: #00f2fe;
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.05);
+  /* Default Cursor Coordinates */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Fallback for native smooth scrolling */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+// Reusable text gradient class
+.text-gradient {
+  background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+section {
+  padding: 5rem 10%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1, h2, h3 {
+  font-family: 'Carter One', cursive;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 5%;
+    min-height: auto;
+  }
+}
+
+.animated-lightbulb {
+  position: absolute; /* or 'fixed' if you want it to scroll with you */
+  top: -10px;
+  right: 8%; /* Adjust to match the screenshot placement */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  animation: swing 4s ease-in-out infinite; /* The swinging animation */
+}
+
+.wire {
+  width: 2px;
+  height: 80px;
+  background-color: #111;
+}
+
+.bulb-base {
+  width: 24px;
+  height: 18px;
+  background-color: #222;
+  border-radius: 2px;
+  /* Creates the threaded screw look */
+  background-image: repeating-linear-gradient(to bottom, transparent, transparent 3px, #111 3px, #111 5px);
+}
+
+.bulb-glass {
+  width: 65px;
+  height: 65px;
+  background-color: #ffea00;
+  border-radius: 50%;
+  margin-top: -3px;
+  /* The large yellow glow effect */
+  box-shadow: 
+    0 0 20px #ffe600,
+    0 0 50px rgba(255, 234, 0, 0.8),
+    0 0 100px rgba(255, 234, 0, 0.4);
+}
+
+@keyframes swing {
+  0% { transform: rotate(12deg); }
+  50% { transform: rotate(-12deg); }
+  100% { transform: rotate(12deg); }
+}
+
+body.light-theme {
+  --bg-color: #f1f5f9;
+  --text-main: #0f172a; /* Darker text for readability */
+  --text-muted: #475569;
+  --primary: #2563eb;
+  --primary-glow: rgba(37, 99, 235, 0.15);
+  --secondary: #3b82f6;
+  --card-bg: #ffffff; /* Solid white cards in light mode */
+  --card-border: #cbd5e1;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+   rgba(253, 72, 1, 0.301),
+    transparent 40%
+  );
+  pointer-events: none; /* Allows clicking through the gradient */
+  z-index: 9999;
+  transition: background 0.2s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes neonGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

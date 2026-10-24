@@ -1,0 +1,28 @@
+<header>
+  <div class="logo">Dev<span>Portfolio</span></div>
+  
+  <nav [class.open]="isMenuOpen">
+    <a routerLink="/" fragment="home" (click)="closeMenu()">Home</a>
+    <a routerLink="/" fragment="about" (click)="closeMenu()">About</a>
+    <a routerLink="/" fragment="experience" (click)="closeMenu()">Experience</a>
+    <a routerLink="/" fragment="projects" (click)="closeMenu()">Projects</a>
+    <a routerLink="/" fragment="skills" (click)="closeMenu()">Skills</a>
+    <a routerLink="/" fragment="contact" (click)="closeMenu()">Contact</a>
+  </nav>
+
+  <!-- Hanging Animated Bulb -->
+  <div class="animated-lightbulb" (click)="toggleTheme()" [class.dimmed]="isLightTheme" title="Toggle Theme">
+    <div class="wire"></div>
+    <div class="bulb-base"></div>
+    <div class="bulb-glass"></div>
+  </div>
+
+  <div class="controls">
+    <!-- Hamburger Button -->
+    <button class="menu-toggle" (click)="toggleMenu()" [class.open]="isMenuOpen" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

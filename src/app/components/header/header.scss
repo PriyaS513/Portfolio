@@ -1,0 +1,140 @@
+/* Desktop Styles (keep existing logo and header styles) */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 10%;
+  background: var(--bg-color);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--card-border);
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    span { color: var(--primary); }
+    z-index: 1001; /* Keep above mobile menu */
+  }
+}
+
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; /* Keep above mobile menu */
+
+  span {
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--text-main);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+}
+
+nav {
+  display: flex;
+  a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 600;
+    transition: color 0.3s;
+    &:hover { color: var(--primary); }
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Animate hamburger lines into an 'X' */
+  .menu-toggle.open {
+    span:first-child { transform: rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: rotate(-45deg); }
+  }
+
+  nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background: var(--bg-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Hidden off-screen to the right */
+    transition: transform 0.3s ease-in-out;
+
+    &.open {
+      transform: translateX(0); /* Slide in */
+    }
+
+    a {
+      margin: 1.5rem 0;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* Complete Hanging Lightbulb Styles */
+.animated-lightbulb {
+  position: absolute;
+  top: 0;
+  right: 8%; /* Adjust this percentage to move it closer/further from the right edge */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1002;
+  transition: transform 0.3s ease;
+
+  /* Subtle swing effect on hover */
+  &:hover {
+    transform: rotate(5deg);
+    transform-origin: top center;
+  }
+
+  .wire {
+    width: 2px;
+    height: 50px;
+    background: #555;
+  }
+
+  .bulb-base {
+    width: 18px;
+    height: 14px;
+    background: #333;
+    border-radius: 2px;
+  }
+
+  .bulb-glass {
+    width: 40px;
+    height: 40px;
+    background: #fbbf24; /* Original yellow glow */
+    border-radius: 50%;
+    box-shadow: 0 0 30px 10px rgba(251, 191, 36, 0.7);
+    transition: all 0.4s ease;
+  }
+
+  /* When Light Theme is active, turn the bulb "off" */
+  &.dimmed .bulb-glass {
+    background: #cbd5e1; /* Dim grey glass */
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.1);
+  }
+}

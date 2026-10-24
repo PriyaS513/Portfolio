@@ -1,0 +1,23 @@
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="experience-list">
+    @for (exp of experiences; track $index) {
+      <div class="experience-card">
+        <div class="exp-header">
+          <h3>{{ exp.role }} <span class="company">@ {{ exp.company }}</span></h3>
+          <span class="duration">{{ exp.duration }}</span>
+        </div>
+        <ul>
+          @for (task of exp.workDone; track $index) {
+            <li>{{ task }}</li>
+          }
+        </ul>
+        <div class="tech-tags">
+          @for (tech of exp.technologies; track $index) {
+            <span class="tag">{{ tech }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

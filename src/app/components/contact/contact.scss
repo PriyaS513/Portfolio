@@ -1,0 +1,95 @@
+#contact {
+  text-align: center;
+  min-height: 50vh;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    color: var(--text-muted);/* Muted text color */
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+  display: inline-block;
+  // margin-top: 2rem; /* Keep for Hero, remove for Contact if it causes spacing issues */
+  padding: 1rem 2.5rem;
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  border: none;
+  background: transparent;
+
+  /* The inner dark button body */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 2px; /* Controls border thickness */
+    background: var(--bg-color);
+    border-radius: 50px;
+    z-index: -1;
+  }
+
+  /* The animated gradient border */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #ff7e5f, #feb47b, #8a2be2);
+    background-size: 300% 300%;
+    border-radius: 50px;
+    z-index: -2;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8; 
+  }
+
+  /* The hover glow effect */
+  &:hover::after {
+    opacity: 1;
+    filter: blur(12px); /* Spreads the gradient out into a glow */
+    animation: neonGlow 3s ease infinite; /* Animates the colors */
+  }
+}
+
+  .contact-socials {
+    margin-top: 4rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+
+      i {
+        font-size: 1.3rem;
+      }
+
+      &:hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}

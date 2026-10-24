@@ -1,0 +1,80 @@
+.greeting {
+  color: var(--primary);
+  font-family: monospace;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+h1, h2 {
+  font-size: 4rem;
+  line-height: 1.1;
+}
+
+h2 { color: var(--text-muted); }
+
+.summary {
+  max-width: 500px;
+  margin-top: 1.5rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 2rem; /* Keep for Hero, remove for Contact if it causes spacing issues */
+  padding: 1rem 2.5rem;
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  border: none;
+  background: transparent;
+
+  /* The inner dark button body */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 2px; /* Controls border thickness */
+    background: var(--bg-color);
+    border-radius: 50px;
+    z-index: -1;
+  }
+
+  /* The animated gradient border */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #ff7e5f, #feb47b, #8a2be2);
+    background-size: 300% 300%;
+    border-radius: 50px;
+    z-index: -2;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8; 
+  }
+
+  /* The hover glow effect */
+  &:hover::after {
+    opacity: 1;
+    filter: blur(12px); /* Spreads the gradient out into a glow */
+    animation: neonGlow 3s ease infinite; /* Animates the colors */
+  }
+}
+
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 2.5rem; /* Down from 4rem */
+  }
+
+  .summary {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  .cta-btn {
+    padding: 0.8rem 1.5rem;
+  }
+}
