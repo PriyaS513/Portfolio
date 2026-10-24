@@ -57,6 +57,10 @@ nav {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+  .animated-lightbulb {
+    right: 80%; 
+  }
+
   .menu-toggle {
     display: flex;
   }
@@ -103,6 +107,7 @@ nav {
   cursor: pointer;
   z-index: 1002;
   transition: transform 0.3s ease;
+  pointer-events: none;
 
   /* Subtle swing effect on hover */
   &:hover {
@@ -121,6 +126,8 @@ nav {
     height: 14px;
     background: #333;
     border-radius: 2px;
+    pointer-events: auto; 
+    cursor: pointer;
   }
 
   .bulb-glass {
@@ -130,6 +137,8 @@ nav {
     border-radius: 50%;
     box-shadow: 0 0 30px 10px rgba(251, 191, 36, 0.7);
     transition: all 0.4s ease;
+    pointer-events: auto; 
+    cursor: pointer;
   }
 
   /* When Light Theme is active, turn the bulb "off" */

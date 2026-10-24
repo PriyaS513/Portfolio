@@ -11,10 +11,10 @@
   </nav>
 
   <!-- Hanging Animated Bulb -->
-  <div class="animated-lightbulb" (click)="toggleTheme()" [class.dimmed]="isLightTheme" title="Toggle Theme">
+  <div class="animated-lightbulb" [class.dimmed]="isLightTheme" title="Toggle Theme">
     <div class="wire"></div>
     <div class="bulb-base"></div>
-    <div class="bulb-glass"></div>
+    <div class="bulb-glass" (click)="toggleTheme()"></div>
   </div>
 
   <div class="controls">
